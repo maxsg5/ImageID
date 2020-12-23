@@ -29,6 +29,7 @@ namespace ImageID.App_Code
             {
                 // Describe an image in natural language
                 ImageDescriptionResponse result = apiInstance.RecognizeDescribe(imageFile);
+                imageFile.Close();
                 return result.BestOutcome.Description;
                 //return result.ToString();
             }
