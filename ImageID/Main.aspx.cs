@@ -32,7 +32,9 @@ namespace ImageID
             //MapPath() to construct a full path into your Uploads directory appending his UserName.
             string destDir = MapPath("/Images"); // destination directory
             string fileName = fu.FileName; // user's file name !! careful..
-
+            Session["filename"] = fileName;
+            Session["destDir"] = destDir;
+ 
             // NOTE : file name is your APP's choice ! You Pick
             string savePath = destDir + @"\image1.jpg";
 
