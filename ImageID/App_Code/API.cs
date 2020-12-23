@@ -15,13 +15,9 @@ namespace ImageID.App_Code
         public static string CallAPI(string relative)
         {
             // Configure API key authorization: Apikey
-            Configuration.Default.AddApiKey("Apikey", "4f84b15b-62fb-4d35-9014-92ef67496abe");
+            Configuration.Default.AddApiKey("Apikey", APIkeys.ImageAPI);
 
             var apiInstance = new RecognizeApi();
-
-            //FileInfo fi = new FileInfo((string)Session["filename"]);
-            //string[] files = Directory.GetFiles((string)Session["dirPath"]);
-            //string relative = $"~/{fi.Directory.Parent.Name}/{fi.Name}";
 
             var imageFile = new System.IO.FileStream(relative, System.IO.FileMode.Open); // System.IO.Stream | Image file to perform the operation on.  Common file formats such as PNG, JPEG are supported.
 
