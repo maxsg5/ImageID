@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div>
             <asp:FileUpload ID="fu" runat="server" />
-            <asp:Button Text="Upload" ID="btnUpload"  runat="server" OnClick="btnUpload_Click" />
+            <asp:Button Text="Upload" ID="btnUpload" runat="server" OnClick="btnUpload_Click" />
             <asp:PlaceHolder runat="server" ID="ph" />
             <asp:Label Text="Please Upload An Image" ID="lblStatus" runat="server" />
         </div>

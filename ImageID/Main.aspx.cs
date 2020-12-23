@@ -17,8 +17,6 @@ namespace ImageID
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-
-
             if (!fu.HasFile)
             {
                 lblStatus.Text = "No File Selected";
@@ -44,9 +42,11 @@ namespace ImageID
 
             //show the image
             System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
-            string relative = $"~/{fi.Directory.Parent.Name}/Images/{fi.Name}";
+
+            string relative = $"/Images/{fi.Name}";
 
             img.ImageUrl = relative;
+
             ph.Controls.Add(img);
 
             //see if directory exists, if not, create it
