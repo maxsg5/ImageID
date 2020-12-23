@@ -21,8 +21,6 @@ namespace ImageID
             string[] files;
             string relative;
 
-
-
             if (!fu.HasFile)
             {
                 lblStatus.Text = "No File Selected";
@@ -41,12 +39,8 @@ namespace ImageID
             Session["filename"] = fileName;
             Session["destDir"] = destDir;
 
-            fi = new FileInfo(fileName);
-            files = Directory.GetFiles(destDir);
-            relative = $"~/{fi.Directory.Parent.Name}/{fi.Name}";
-
             // NOTE : file name is your APP's choice ! You Pick
-            string savePath = destDir + @"\image1.jpg";
+            string savePath = destDir + @"\" + fileName;
 
             //see if directory exists, if not, create it
             try
@@ -65,10 +59,7 @@ namespace ImageID
                         {
                             fu.SaveAs(savePath);
 
-
-
-
-                            lblStatus.Text = API.CallAPI(relative);
+                            lblStatus.Text = API.CallAPI(savePath);
                         }
                         catch (Exception exc)
                         {
@@ -82,7 +73,7 @@ namespace ImageID
                         {
                             File.Delete(Directory.GetFiles(destDir)[0]);
                             fu.SaveAs(savePath);
-                            lblStatus.Text = API.CallAPI(relative);
+                            lblStatus.Text = API.CallAPI(savePath);
                         }
                         catch (Exception exc)
                         {
@@ -97,9 +88,9 @@ namespace ImageID
                 lblStatus.Text = $"The process failed: {exception}";
             }
 
-            FileInfo fi = new FileInfo(savePath);
+            fi = new FileInfo(savePath);
 
-            lblStatus.Text = "File Upload Successful";
+            //lblStatus.Text = "File Upload Successful";
         }
     }
 }
