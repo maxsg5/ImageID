@@ -10,11 +10,8 @@
     <form id="form1" runat="server">
         <div>
             <asp:FileUpload ID="fu" runat="server" />
-            <asp:Button Text="Upload" ID="btnUpload"  runat="server" />
+            <asp:Button Text="Upload" ID="btnUpload"  runat="server" OnClick="btnUpload_Click" />
         </div>
-        
     </form>
-    
 </body>
 </html>
-

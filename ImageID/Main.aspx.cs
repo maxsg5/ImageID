@@ -11,7 +11,10 @@ namespace ImageID
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+        }
 
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
         }
     }
 }
