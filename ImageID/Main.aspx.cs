@@ -17,6 +17,12 @@ namespace ImageID
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
+            FileInfo fi;
+            string[] files;
+            string relative;
+
+
+
             if (!fu.HasFile)
             {
                 lblStatus.Text = "No File Selected";
@@ -34,7 +40,11 @@ namespace ImageID
             string fileName = fu.FileName; // user's file name !! careful..
             Session["filename"] = fileName;
             Session["destDir"] = destDir;
- 
+
+            fi = new FileInfo(fileName);
+            files = Directory.GetFiles(destDir);
+            relative = $"~/{fi.Directory.Parent.Name}/{fi.Name}";
+
             // NOTE : file name is your APP's choice ! You Pick
             string savePath = destDir + @"\image1.jpg";
 
@@ -54,7 +64,11 @@ namespace ImageID
                         try
                         {
                             fu.SaveAs(savePath);
-                            lblStatus.Text = API.CallAPI();
+
+
+
+
+                            lblStatus.Text = API.CallAPI(relative);
                         }
                         catch (Exception exc)
                         {
@@ -68,7 +82,7 @@ namespace ImageID
                         {
                             File.Delete(Directory.GetFiles(destDir)[0]);
                             fu.SaveAs(savePath);
-                            lblStatus.Text = API.CallAPI();
+                            lblStatus.Text = API.CallAPI(relative);
                         }
                         catch (Exception exc)
                         {
