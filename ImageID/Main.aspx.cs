@@ -17,9 +17,7 @@ namespace ImageID
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            FileInfo fi;
-            string[] files;
-            string relative;
+
 
             if (!fu.HasFile)
             {
@@ -41,6 +39,15 @@ namespace ImageID
 
             // NOTE : file name is your APP's choice ! You Pick
             string savePath = destDir + @"\" + fileName;
+            string[] files = Directory.GetFiles(destDir);
+            FileInfo fi = new FileInfo(files[0]);
+
+            //show the image
+            System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
+            string relative = $"~/{fi.Directory.Parent.Name}/Images/{fi.Name}";
+
+            img.ImageUrl = relative;
+            ph.Controls.Add(img);
 
             //see if directory exists, if not, create it
             try
