@@ -38,16 +38,7 @@ namespace ImageID
             // NOTE : file name is your APP's choice ! You Pick
             string savePath = destDir + @"\" + fileName;
             string[] files = Directory.GetFiles(destDir);
-            FileInfo fi = new FileInfo(files[0]);
-
-            //show the image
-            System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
-
-            string relative = $"/Images/{fi.Name}";
-
-            img.ImageUrl = relative;
-
-            ph.Controls.Add(img);
+            
 
             //see if directory exists, if not, create it
             try
@@ -95,7 +86,20 @@ namespace ImageID
                 lblStatus.Text = $"The process failed: {exception}";
             }
 
-            fi = new FileInfo(savePath);
+           FileInfo fi = new FileInfo(savePath);
+
+            //show the image
+            System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
+
+            string relative = $"/Images/{fi.Name}";
+
+            img.ImageUrl = relative;
+            img.CssClass = "imgClass";
+
+
+            ph.Controls.Add(img);
+
+
 
             //lblStatus.Text = "File Upload Successful";
         }

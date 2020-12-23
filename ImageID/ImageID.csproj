@@ -78,6 +78,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Main.aspx" />
+    <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
