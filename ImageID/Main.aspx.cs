@@ -30,15 +30,14 @@ namespace ImageID
             }
 
             //MapPath() to construct a full path into your Uploads directory appending his UserName.
-            string destDir = MapPath("/Images"); // destination directory
+            string destDir = MapPath("~/Images"); // destination directory
             string fileName = fu.FileName; // user's file name !! careful..
             Session["filename"] = fileName;
             Session["destDir"] = destDir;
 
             // NOTE : file name is your APP's choice ! You Pick
             string savePath = destDir + @"\" + fileName;
-            string[] files = Directory.GetFiles(destDir);
-            
+            //string[] files = Directory.GetFiles(destDir);
 
             //see if directory exists, if not, create it
             try
@@ -86,7 +85,7 @@ namespace ImageID
                 lblStatus.Text = $"The process failed: {exception}";
             }
 
-           FileInfo fi = new FileInfo(savePath);
+            FileInfo fi = new FileInfo(savePath);
 
             //show the image
             System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
@@ -96,10 +95,7 @@ namespace ImageID
             img.ImageUrl = relative;
             img.CssClass = "imgClass";
 
-
             ph.Controls.Add(img);
-
-
 
             //lblStatus.Text = "File Upload Successful";
         }
